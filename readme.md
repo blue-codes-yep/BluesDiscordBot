@@ -1,6 +1,7 @@
 # Blue's Discord bot
 
-Working on making a simple Discord bot that will be able too, allow users to request roles,
+Working on making a simple Discord bot that will be able too, 
+allow users to request roles,
 As well as introduce them to the server.
 
 ## Installation
