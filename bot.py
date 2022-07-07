@@ -16,4 +16,8 @@ intents = discord.Intents.default()
 intents.members = True
 
 client = MyClient(intents=intents)
+<<<<<<< HEAD
 client.run('my token')
+=======
+client.run('token')
+>>>>>>> c8e39bedf7f1026b2e5765378e0778f7a26b7792
