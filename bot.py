@@ -1,23 +1,23 @@
 import discord
+from discord.ext import commands
+import events
+import asyncio
 
 
-class MyClient(discord.Client):
+class MyClient(commands.Bot):
     async def on_ready(self):
         print('Logged on as', self.user)
 
-    async def on_member_join(self, member):
-        guild = member.guild
-        if guild.system_channel is not None:
-            to_send = f'Welcome {member.mention} to the best {guild.name}!'
-            await guild.system_channel.send(to_send)
 
+async def main():
+    intents = discord.Intents.default()
+    intents.members = True
+    intents.message_content = True
+    Bot = MyClient(intents=intents, command_prefix='!')
 
-intents = discord.Intents.default()
-intents.members = True
+    async with Bot:
+        await Bot.load_extension('events')
+        await Bot.start(
+            'NzYwMzA0NDMxNDA4NjExMzk4.G5PSjL.gb2AbDR6XqCI0eRoDkDdbyhmG9l-8HuBVxmmwM')
 
-client = MyClient(intents=intents)
-<<<<<<< HEAD
-client.run('my token')
-=======
-client.run('token')
->>>>>>> c8e39bedf7f1026b2e5765378e0778f7a26b7792
+asyncio.run(main())
