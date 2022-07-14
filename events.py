@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 from discord.utils import get
 import aiohttp
+from valo_api import get_mmr_details_by_name_v1
+from valo_api.exceptions.valo_api_exception import ValoAPIException
 
 
 class NewMember(commands.Cog):
@@ -124,14 +126,18 @@ class NewMember(commands.Cog):
                     await ctx.send(f'Something went wrong, please contact ! Blue#0921')
                     print(response.status)
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        # don't respond to ourselves
-        if message.author == self.bot.user:
-            return
-
-        if message.content == 'ping':
-            await message.channel.send('pong')
+    @commands.command(aliases=['valrank', 'checkrank', 'valorant'])
+    async def valorant_rank(self, ctx, *, arg):
+        async with ctx.typing():
+            if len == 0:
+                return await ctx.send(f'Error: Please enter a username.')
+        name, _, tag = arg.partition("#")
+        region, name = name[:2], name[2:]
+        try:
+            data = get_mmr_details_by_name_v1(region, name, tag)
+            return await ctx.send(f'Rank: {data.currenttierpatched} - RR: {data.ranking_in_tier}')
+        except ValoAPIException as e:
+            print(e)
 
 
 async def setup(bot):
