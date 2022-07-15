@@ -13,4 +13,4 @@ Also welcomes new people to the server! :)
 
 ### TODO:
 
-1. Fix Self-Role assigining with emojis ( Something wrong with custom emojis unicode? )
+1. None currently, will continue to update readme if I receive new ideas to add to the bot. 
