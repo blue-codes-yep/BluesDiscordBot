@@ -4,6 +4,8 @@ Discord bot that currently allows users, to set-roles, check their rank for a ga
 
 Also welcomes new people to the server! :) 
 
+#Bot Hosted on Heroku
+
 ## Installation
 
 ```bash
