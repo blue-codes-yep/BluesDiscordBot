@@ -46,7 +46,6 @@ class NewMember(commands.Cog):
         try:
             role_id = self.emoji_to_role[payload.emoji]
         except KeyError:
-
             print("Error on emoji_to_role")
             return
 
