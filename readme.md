@@ -1,7 +1,8 @@
 # Blue's Discord bot
 
-Working on making a simple Discord bot that will be able too, allow users to request roles,
-As well as introduce them to the server, may continue to add more features but that is the goal for now.
+Discord bot that currently allows users, to set-roles, check their rank for a game called Valorant, as well as upload custom emojis.
+
+Also welcomes new people to the server! :) 
 
 ## Installation
 
@@ -12,8 +13,4 @@ As well as introduce them to the server, may continue to add more features but t
 
 ### TODO:
 
-1. Set-up listeners, that way the functions are added into the Bot's class, and not contained within it.
-
-2. Set-up role selection.
-
-3. Allow users to upload custom emotes?
+1. Fix Self-Role assigining with emojis ( Something wrong with custom emojis unicode? )
