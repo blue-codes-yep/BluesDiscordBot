@@ -13,5 +13,5 @@ class MyBot(commands.Bot):
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
-Bot = MyBot(intents=intents, command_prefix='!')
-Bot.run('token')
+Bot = MyBot(intents=intents, command_prefix='!', help_command=None)
+Bot.run('NzYwMzA0NDMxNDA4NjExMzk4.GXNr8T.0qOw-669JiWG7J_1b01zr-6RViO2xozd-r8C5U')

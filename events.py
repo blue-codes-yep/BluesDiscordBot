@@ -12,14 +12,26 @@ class NewMember(commands.Cog):
         self.bot = bot
         self._last_member = None
         # ID of the message that can be reacted to to add/remove a role.
-        self.role_message_id = 996290080115269692
+        self.role_message_id = 996982515904544768
         self.emoji_to_role = {
-            # ID of the role associated with unicode emoji '🔴'.
-            discord.PartialEmoji(name='🔴'): 996308087755526154,
-            # ID of the role associated with unicode emoji '🟡'.
-            discord.PartialEmoji(name='🟡',): 996308265606594601,
-            # ID of the role associated with a partial emoji's ID.
-            discord.PartialEmoji(name='green', id=0): 996308551641350195,
+            # Iron
+            discord.PartialEmoji(name='Iron_Valorant', id=996983352252977203): 996985470489727067,
+            # Bronze
+            discord.PartialEmoji(name='Bronze_Valorant', id=996983349547630672): 996987470711365633,
+            # Silver
+            discord.PartialEmoji(name='Silver_Valorant', id=996983350562656266): 996987607256928257,
+            # Gold
+            discord.PartialEmoji(name='Gold_Valorant', id=996983351460245514): 996987717290295366,
+            # Plat
+            discord.PartialEmoji(name='Platinum_Valorant', id=996983348599717958): 996988203112337428,
+            # Diamond
+            discord.PartialEmoji(name='Diamond_Valorant', id=996983353091821668): 996988286604161116,
+            # Ascendant
+            discord.PartialEmoji(name='Ascendant_Valorant', id=996983603579867257): 996988431181828116,
+            # Immortal
+            discord.PartialEmoji(name='Immortal_Valorant', id=996983353985224784): 996988637084405801,
+            # Radiant
+            discord.PartialEmoji(name='Radiant_Valorant', id=996983355960729610): 996988747931463690,
         }
 
     @commands.Cog.listener()
@@ -34,6 +46,8 @@ class NewMember(commands.Cog):
         try:
             role_id = self.emoji_to_role[payload.emoji]
         except KeyError:
+
+            print("Error on emoji_to_role")
             return
 
         role = guild.get_role(role_id)
@@ -138,6 +152,22 @@ class NewMember(commands.Cog):
             return await ctx.send(f'Rank: {data.currenttierpatched} - RR: {data.ranking_in_tier}')
         except ValoAPIException as e:
             print(e)
+
+    @commands.command(aliases=['help', 'h'])
+    async def help_section(self, ctx):
+        embed = discord.Embed(
+            title="Help", description=f'Commands Prefix:`{self.bot.command_prefix}`', color=0xb2558d)
+
+        embed.add_field(name=f'`{self.bot.command_prefix}upload_emoji emojiname` (Can also just say `!emoji`)',
+                        value="Sets attached image as a custom server emoji with the given name.",
+                        inline=False)
+
+        embed.add_field(name=f'`{self.bot.command_prefix}checkrank naReallyBlue#NA1` (aka `!valrank`, `!checkrank`, `!valorant`)',
+                        value="Check your current Valorant rank, and RR rating. Region must be lowercase. `Region`,`Username`,`Tag`",
+                        inline=False)
+
+        embed.set_footer(text="Contact ! Blue#0921 with issues.")
+        return await ctx.send(embed=embed)
 
 
 async def setup(bot):
